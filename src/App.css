@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
@@ -28,11 +28,22 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+.add-button {
+  width: 240px;
+  margin-top: 35px;
+  color: #61dafb;
+  background-color: #727376;
+  border: #61dafb;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
