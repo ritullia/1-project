@@ -1,10 +1,7 @@
-function Button({ name, children }) {
+function Button({ name, onClick, children }) {
   return (
     <>
-      <button
-        className="add-button"
-        onClick={() => alert("Please do not click on button 😱")}
-      >
+      <button className="add-button" onClick={onClick}>
         {name}
         {children}
       </button>

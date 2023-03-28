@@ -31,8 +31,23 @@ function App() {
         >
           Codeacademy
         </a>
-        <Button name="Paspausti">
+        <Button
+          name="Paspausti"
+          onClick={() => alert("Please do not click on button 😱")}
+        >
           <span> 🏝️ </span>
+        </Button>
+        <Button
+          name="Log in"
+          onClick={() => alert("Hello, now You loged in 🌠")}
+        >
+          <span> 🙃 </span>
+        </Button>
+        <Button
+          name="Register"
+          onClick={() => alert("You just clicked the button 🚀")}
+        >
+          <span> 🙄 </span>
         </Button>
       </header>
       <h1>Categories</h1>
