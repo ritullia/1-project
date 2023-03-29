@@ -5,7 +5,9 @@ import Posters from "./Components/Categories/Posters";
 import Artists from "./Components/Categories/Artists";
 import Stickers from "./Components/Categories/Stickers";
 import Header from "./Components/Header";
-import Button from "./Components/Button";
+import { Button } from "./Components/Button";
+import { ProductList } from "./Components/Categories/ProductList";
+import { DrinkList } from "./Components/DrinkList";
 
 function App() {
   const onFaustasHeaderClick = () => {
@@ -49,12 +51,16 @@ function App() {
         >
           <span> 🙄 </span>
         </Button>
+        <ProductList />
+        <DrinkList />
       </header>
-      <h1>Categories</h1>
-      <Canva />
-      <Posters />
-      <Artists />
-      <Stickers />
+      <main>
+        <h1>Categories</h1>
+        <Canva />
+        <Posters />
+        <Artists />
+        <Stickers />
+      </main>
     </div>
   );
 }

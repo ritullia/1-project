@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 function Header({ name, onClick, children }) {
-  const headerRef = useRef();
+  const headerRef = useRef(null);
 
   if (headerRef.current) {
     headerRef.current.style.backgroundColor = "purple";
