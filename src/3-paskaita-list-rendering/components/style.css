@@ -1,0 +1,14 @@
+.student-card-div {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+p {
+  margin-left: 10px;
+  color: blueviolet;
+}
+
+ul {
+  list-style-type: none;
+}
