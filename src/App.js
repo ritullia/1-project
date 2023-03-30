@@ -9,6 +9,7 @@ import { Button } from "./Components/Button";
 import { ProductList } from "./Components/Categories/ProductList";
 import { DrinkList } from "./Components/DrinkList";
 import { StudentsList } from "./3-paskaita-list-rendering/components/StudentsList";
+import { Recepies } from "./3-paskaita-list-rendering/components/Recepies";
 
 function App() {
   const onFaustasHeaderClick = () => {
@@ -64,6 +65,9 @@ function App() {
       </main> */}
       <div>
         <StudentsList />
+      </div>
+      <div>
+        <Recepies />
       </div>
     </div>
   );

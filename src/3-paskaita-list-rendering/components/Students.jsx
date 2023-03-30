@@ -1,7 +1,7 @@
 import "./style.css";
 
 export const Students = ({ student }) => {
-  const { image, name, surname, age, Id, team } = student;
+  const { image, name, surname, age, team } = student;
 
   return (
     <>
