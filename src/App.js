@@ -10,6 +10,9 @@ import { ProductList } from "./Components/Categories/ProductList";
 import { DrinkList } from "./Components/DrinkList";
 import { StudentsList } from "./3-paskaita-list-rendering/components/StudentsList";
 import { Recepies } from "./3-paskaita-list-rendering/components/Recepies";
+import { NavBar } from "./5-paskaita/NavBar";
+
+import { ItemList } from "./Products/ItemList";
 
 function App() {
   const onFaustasHeaderClick = () => {
@@ -17,6 +20,7 @@ function App() {
   };
   return (
     <div className="App">
+      <NavBar />
       {/* <Header
         name="Burbulas"
         onClick={() => console.log("Button Burbulas header clicked")}
@@ -63,12 +67,14 @@ function App() {
         <Artists />
         <Stickers />
       </main> */}
-      <div>
+      {/* <div>
         <StudentsList />
       </div>
       <div>
         <Recepies />
-      </div>
+      </div> */}
+
+      <ItemList />
     </div>
   );
 }

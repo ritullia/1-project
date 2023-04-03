@@ -1,0 +1,9 @@
+.buttonClickTwo {
+  background-color: coral;
+  border-color: coral;
+  color: aquamarine;
+  height: 50px;
+  padding: 15px;
+  border-radius: 20px;
+  margin: 15px;
+}
