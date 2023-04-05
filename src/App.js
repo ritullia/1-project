@@ -13,6 +13,11 @@ import { Recepies } from "./3-paskaita-list-rendering/components/Recepies";
 import { NavBar } from "./5-paskaita/NavBar";
 
 import { ItemList } from "./Products/ItemList";
+import { StateButton } from "./6-paskaita-useState/Button";
+import { TextInput } from "./6-paskaita-useState/TextInput";
+import { CheckBox } from "./6-paskaita-useState/CheckBox";
+import { Form } from "./6-paskaita-useState/Form";
+import { MoodChecker } from "./6-paskaita-useState/MoodChecker";
 
 function App() {
   const onFaustasHeaderClick = () => {
@@ -20,7 +25,12 @@ function App() {
   };
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar />
+      <StateButton />
+      <TextInput />
+      <CheckBox />
+      <Form />
+      <MoodChecker /> */}
       {/* <Header
         name="Burbulas"
         onClick={() => console.log("Button Burbulas header clicked")}

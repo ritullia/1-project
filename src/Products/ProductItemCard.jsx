@@ -1,28 +1,50 @@
+// import { ProductItemModal } from "./ProductItemModal";
+// import { useState } from "react";
+
 import {
   Card,
-  Container,
   CardImage,
   CardText,
   Brand,
   Discount,
   TextDiv,
+  PriceDiv,
   Price,
+  New,
 } from "./styles/style";
 
-export const ProductItemCard = ({ item }) => {
+export const ProductItemCard = ({ item, onClick }) => {
   const { brand, title, thumbnail, discountPercentage, price } = item;
 
-  return (
-    <Container>
-      <Card>
+  if (discountPercentage === 0) {
+    return (
+      <Card onClick={() => onClick(item)}>
         <TextDiv>
-          <Discount>{discountPercentage}</Discount>
+          <New>New</New>
           <Brand>{brand}</Brand>
           <CardText>{title}</CardText>
         </TextDiv>
         <CardImage src={thumbnail} />
-        <Price>{price}</Price>
+
+        <PriceDiv>
+          <Price>{price} &#8364; </Price>
+        </PriceDiv>
       </Card>
-    </Container>
+    );
+  }
+
+  return (
+    <Card onClick={() => onClick(item)}>
+      <TextDiv>
+        <Discount>{discountPercentage}%</Discount>
+        <Brand>{brand}</Brand>
+        <CardText>{title}</CardText>
+      </TextDiv>
+      <CardImage src={thumbnail} />
+
+      <PriceDiv>
+        <Price>{price} &#8364; </Price>
+      </PriceDiv>
+    </Card>
   );
 };
