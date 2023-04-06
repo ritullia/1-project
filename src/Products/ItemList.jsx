@@ -4,10 +4,12 @@ import { Container } from "./styles/style";
 import { useState } from "react";
 import { ToastMessage } from "./ToastMessage";
 import { Modal, Button } from "react-bootstrap";
+import "./styles/styles.css";
 
 export const ItemList = () => {
   const [activeItem, setActiveItem] = useState(null);
-  const [addToCardSucc, setaddToCardSucc] = useState(false);
+  // const [addToCardSucc, setaddToCardSucc] = useState(false);
+  const [addedToCart, setaddedToCart] = useState(null);
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -15,8 +17,9 @@ export const ItemList = () => {
 
   const handleAddToCart = () => {
     console.log(`Įdėta į krepšelį`);
+    setaddedToCart(activeItem);
     setActiveItem(null);
-    setaddToCardSucc(true);
+    // setaddToCardSucc(true);
   };
 
   const handleClose = () => {
@@ -32,7 +35,12 @@ export const ItemList = () => {
 
   return (
     <>
-      <Container>{cardArr}</Container>
+      <Container className="item-container">{cardArr}</Container>
+      <ToastMessage
+        show={addedToCart}
+        onClose={() => setaddedToCart(false)}
+        body={` ${addedToCart?.title} `}
+      />
       <Modal
         show={!!activeItem}
         onHide={handleClose}
@@ -55,10 +63,6 @@ export const ItemList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <ToastMessage
-        show={addToCardSucc}
-        onClose={() => setaddToCardSucc(false)}
-      />
     </>
   );
 };

@@ -1,5 +1,8 @@
 .App {
+  margin: auto;
+  padding: auto;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -37,6 +40,10 @@
   padding: 10px;
   border-radius: 8px;
   font-size: 18px;
+}
+
+.App {
+  background-color: #282c34;
 }
 
 /* @keyframes App-logo-spin {
