@@ -1,15 +1,18 @@
-import { cardData } from "./data/data";
+// import { cardData } from "./data/data";
 import { ProductItemCard } from "./ProductItemCard";
 import { Container } from "./styles/style";
 import { useState } from "react";
 import { ToastMessage } from "./ToastMessage";
 import { Modal, Button } from "react-bootstrap";
 import "./styles/styles.css";
+import { useEffect } from "react";
+import { IconContext } from "react-icons";
 
 export const ItemList = () => {
   const [activeItem, setActiveItem] = useState(null);
-  // const [addToCardSucc, setaddToCardSucc] = useState(false);
   const [addedToCart, setaddedToCart] = useState(null);
+  const [products, setProducts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -26,16 +29,33 @@ export const ItemList = () => {
     setActiveItem(null);
   };
 
-  const cardArr = cardData.map((item) => {
-    console.log(item);
-    return (
-      <ProductItemCard key={item.id} item={item} onClick={handleItemClick} />
-    );
-  });
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.products);
+        setProducts(data.products);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      <Container className="item-container">{cardArr}</Container>
+      <Container className="item-container">
+        {products?.map((item) => {
+          return (
+            <ProductItemCard
+              key={item.id}
+              item={item}
+              onClick={handleItemClick}
+            />
+          );
+        })}
+      </Container>
       <ToastMessage
         show={addedToCart}
         onClose={() => setaddedToCart(false)}

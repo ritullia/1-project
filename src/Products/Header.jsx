@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./styles/styles.css";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Cart } from "./Cart";
 
 export const Header = () => {
   return (
@@ -39,6 +40,7 @@ export const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <Cart />
       </Navbar>
     </>
   );
