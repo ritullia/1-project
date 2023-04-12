@@ -6,13 +6,14 @@ import { ToastMessage } from "./ToastMessage";
 import { Modal, Button } from "react-bootstrap";
 import "./styles/styles.css";
 import { useEffect } from "react";
-import { IconContext } from "react-icons";
+import { Header } from "./Header";
 
 export const ItemList = () => {
   const [activeItem, setActiveItem] = useState(null);
   const [addedToCart, setaddedToCart] = useState(null);
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [productFilter, setProductFilter] = useState(" ");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -29,11 +30,15 @@ export const ItemList = () => {
     setActiveItem(null);
   };
 
+  const handleProductOnChange = (e) => {
+    setProductFilter(e.target.value);
+  };
+
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.products);
+        // console.log(data.products);
         setProducts(data.products);
         setIsLoading(false);
       });
@@ -45,44 +50,52 @@ export const ItemList = () => {
 
   return (
     <>
-      <Container className="item-container">
-        {products?.map((item) => {
-          return (
-            <ProductItemCard
-              key={item.id}
-              item={item}
-              onClick={handleItemClick}
-            />
-          );
-        })}
-      </Container>
-      <ToastMessage
-        show={addedToCart}
-        onClose={() => setaddedToCart(false)}
-        body={` ${addedToCart?.title} `}
-      />
-      <Modal
-        show={!!activeItem}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{activeItem?.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {activeItem?.description}. Stock: {activeItem?.stock}
-        </Modal.Body>
+      <Header></Header>
+      <div>
+        <div>
+          <input onBlur={handleProductOnChange} />
+        </div>
+        <Container className="item-container">
+          {products
+            ?.filter((item) => item.title.toLowerCase().includes(productFilter))
+            .map((item) => {
+              return (
+                <ProductItemCard
+                  key={item.id}
+                  item={item}
+                  onClick={handleItemClick}
+                />
+              );
+            })}
+        </Container>
+        <ToastMessage
+          show={!!addedToCart}
+          onClose={() => setaddedToCart(false)}
+          body={` ${addedToCart?.title} `}
+        />
+        <Modal
+          show={!!activeItem}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{activeItem?.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {activeItem?.description}. Stock: {activeItem?.stock}
+          </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAddToCart}>
-            Add to Cart
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleAddToCart}>
+              Add to Cart
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </>
   );
 };

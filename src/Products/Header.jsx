@@ -17,8 +17,8 @@ export const Header = () => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">sales</Nav.Link>
-              <Nav.Link href="#link">new</Nav.Link>
+              <Nav.Link href="">Home</Nav.Link>
+              <Nav.Link href="#link">Products</Nav.Link>
               <NavDropdown title="phones" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Samsung</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">iPhone</NavDropdown.Item>
@@ -29,7 +29,7 @@ export const Header = () => {
                 <NavDropdown.Item href="#action/3.2">HP</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Infinix</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#link">brands</Nav.Link>
+              <Nav.Link href="#link">Log In</Nav.Link>
               <NavDropdown title="outlet" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">...</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">....</NavDropdown.Item>

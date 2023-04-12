@@ -8,11 +8,13 @@
 }
 
 .iconCart {
-  vertical-align: middle;
-  color: #a52a2a;
+  /* vertical-align: middle; */
+  color: #221d1d;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin: 25px;
+  margin: 0 auto;
+  max-width: 900px;
 }
 
 .iconDiv {
@@ -20,7 +22,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  background-color: #a52a2a;
+  background-color: #c53838;
   border-radius: 50px;
   transform: translate(8px, 80%);
 }
