@@ -1,5 +1,5 @@
 import { Header } from "./Header";
-import { LoginContainer } from "./styles/StyledLogin";
+import { LoginContainer, FormStyle } from "./styles/StyledLogin";
 
 export const Login = () => {
   return (
@@ -11,11 +11,11 @@ export const Login = () => {
             <h4>Login to Your account</h4>
             <p>Please enter Your e-mail and password to login</p>
           </div>
-          <form>
+          <FormStyle>
             <input type="email" placeholder="Your e-mail" />
             <input type="password" placeholder="***********" required />
             <button className="btn btn-success">LOGIN</button>
-          </form>
+          </FormStyle>
         </div>
       </LoginContainer>
     </>

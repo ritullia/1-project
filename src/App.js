@@ -23,6 +23,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./Products/HomePage";
 import { Login } from "./Products/Login";
+import { Register } from "./Products/Register";
 
 function App() {
   const onFaustasHeaderClick = () => {
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ItemList />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </>

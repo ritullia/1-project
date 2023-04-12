@@ -17,11 +17,12 @@ export const Container = styled.div`
 `;
 
 export const CardImage = styled.img`
-  display: block
+  display: block;
   max-width: 100%;
   height: 150px;
   object-fit: cover;
 `;
+
 export const TextDiv = styled.div`
   display: flex;
 `;
