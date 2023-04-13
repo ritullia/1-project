@@ -5,53 +5,70 @@ import {
   MainTag,
   RegisterForm,
   FormInput,
+  StyledButton,
 } from "./styles/StyledRegister";
 
 export const Register = () => {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredLastName, setEnteredLastName] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
 
   const handleInfoSubmit = (e) => {
     e.preventDefault();
-    alert(enteredName + " " + enteredLastName + " " + enteredEmail);
+    alert(
+      `${formData.name} ${formData.lastname} registered with: ${formData.email}`
+    );
   };
 
-  const handleInfoClick = (e) => {
-    setEnteredName(e.target.value);
-  };
-  const handleLastNameClick = (e) => {
-    setEnteredLastName(e.target.value);
-  };
-  const handleEmailClick = (e) => {
-    setEnteredEmail(e.target.value);
+  const handleOnChange = (e) => {
+    // console.log("e.target.value", e.target.value);
+    // console.log("e.target.name", e.target.name);
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
     <>
       <Header />
-      <div>Welcome to our Registration page:</div>
       <RegisterContainer>
-        <MainTag>Register Here</MainTag>
+        <MainTag>
+          <h2>Register Here</h2>
+          <p>Please fill in registration:</p>
+        </MainTag>
+
         <RegisterForm onSubmit={handleInfoSubmit}>
           <FormInput
             type="text"
+            name="name" // name turi buti unique
             placeholder="First Name"
-            onChange={handleInfoClick}
+            onChange={handleOnChange}
           />
           <FormInput
+            name="lastname"
             type="text"
             placeholder="Last Name"
-            onChange={handleLastNameClick}
+            onChange={handleOnChange}
           />
           <FormInput
+            name="email"
             type="email"
             placeholder="Email Address"
-            onChange={handleEmailClick}
+            onChange={handleOnChange}
           />
-          <FormInput type="password" placeholder="Password:" />
+          <FormInput
+            name="password"
+            type="password"
+            placeholder="Password:"
+            onChange={handleOnChange}
+          />
           <FormInput type="password" placeholder="Re-enter Password" />
-          <button className="btn btn-warning">Create Account</button>
+          <StyledButton className="btn">Create Account</StyledButton>
         </RegisterForm>
       </RegisterContainer>
     </>
