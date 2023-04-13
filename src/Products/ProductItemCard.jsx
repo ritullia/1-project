@@ -1,5 +1,6 @@
 // import { ProductItemModal } from "./ProductItemModal";
 // import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Card,
@@ -15,7 +16,7 @@ import {
 } from "./styles/style";
 
 export const ProductItemCard = ({ item, onClick }) => {
-  const { brand, title, thumbnail, discountPercentage, price } = item;
+  const { id, brand, title, thumbnail, discountPercentage, price } = item;
 
   // const discount = discountPercentage
   //   ? Math.round(price * ((100 - discountPercentage) / 100))
@@ -51,6 +52,7 @@ export const ProductItemCard = ({ item, onClick }) => {
           <New>New</New>
         )}
       </TextDiv>
+      <Link to={`/product/${id}`}>View Details</Link>
       <CardImage src={thumbnail} />
 
       <PriceDiv>

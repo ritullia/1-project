@@ -24,29 +24,32 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./Products/HomePage";
 import { Login } from "./Products/Login";
 import { Register } from "./Products/Register";
+import { ProductsDetails } from "./Products/ProductsDetails";
 
 function App() {
-  const onFaustasHeaderClick = () => {
-    alert("Button Faustas header clicked");
-  };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submited");
-  };
+  // const onFaustasHeaderClick = () => {
+  //   alert("Button Faustas header clicked");
+  // };
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submited");
+  // };
 
-  const handleSubmitKeyUp = () => {
-    console.log("KeyUp event 2");
-  };
-  const handleSubmitKeyDown = (e) => {
-    console.log("Keydown event 1");
-    console.log(e.code);
-  };
+  // const handleSubmitKeyUp = () => {
+  //   console.log("KeyUp event 2");
+  // };
+  // const handleSubmitKeyDown = (e) => {
+  //   console.log("Keydown event 1");
+  //   console.log(e.code);
+  // };
 
   return (
     <>
       <Routes>
+        <Route path="*" element={<div>Page not found</div>} />
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ItemList />} />
+        <Route path="/product/:id" element={<ProductsDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
