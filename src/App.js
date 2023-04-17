@@ -25,6 +25,10 @@ import { HomePage } from "./Products/HomePage";
 import { Login } from "./Products/Login";
 import { Register } from "./Products/Register";
 import { ProductsDetails } from "./Products/ProductsDetails";
+import { PageNotFound } from "./Products/PageNotFound";
+import { Posts } from "./Products/posts/Posts";
+import { Post } from "./Products/posts/Post";
+import { Comments } from "./Products/posts/Comments";
 
 function App() {
   // const onFaustasHeaderClick = () => {
@@ -46,12 +50,17 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<div>Page not found</div>} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ItemList />} />
         <Route path="/product/:id" element={<ProductsDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/posts" element={<Posts />}>
+          <Route path=":postId" element={<Post />}>
+            <Route path="comments" element={<Comments />} />
+          </Route>
+        </Route>
       </Routes>
     </>
     // <div className="App">

@@ -6,12 +6,20 @@ import {
   ImgContainer,
   ProductImg,
   ProductDetail,
+  ProductH2Tag,
+  ProductImagesDiv,
+  ProductImages,
+  ProductText,
+  ProductDescr,
+  ProductPrice,
 } from "./styles/StyledProduct";
 
-export const ProductsDetails = () => {
+export const ProductsDetails = ({ item }) => {
   const { id } = useParams();
   const [singleProduct, setSinglePoduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // const { title, thumbnail, brand, category, description, images } = item;
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
@@ -21,7 +29,7 @@ export const ProductsDetails = () => {
         setSinglePoduct(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -35,22 +43,28 @@ export const ProductsDetails = () => {
         <ImgContainer>
           <ProductImg src={singleProduct.thumbnail} alt="img" />
         </ImgContainer>
+        <ProductImagesDiv>
+          {singleProduct.images.map((picture, index) => (
+            <ProductImages src={picture} key={index} alt={`${index} image`} />
+          ))}
+        </ProductImagesDiv>
         <ProductDetail>
           <div>
-            <h2>{singleProduct.title}</h2>
-            <p>Brand: {singleProduct.brand}</p>
+            <ProductH2Tag>{singleProduct.title}</ProductH2Tag>
+            <ProductText>Brand: {singleProduct.brand}</ProductText>
+            <ProductDescr>{singleProduct.description}</ProductDescr>
+          </div>
+          <div>
             <p>
               <span>Stock: {singleProduct.stock}</span>
             </p>
             <p>Category: {singleProduct.category}</p>
           </div>
-          <div>
-            <p>Description</p>
-            <p>{singleProduct.description}</p>
-          </div>
-          <div>
-            <p>{singleProduct.price}</p>
-          </div>
+          <ProductPrice>
+            <p>
+              {singleProduct.price} <span>€</span>
+            </p>
+          </ProductPrice>
           <div>
             <div>Rating: {singleProduct.rating}</div>
           </div>

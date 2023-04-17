@@ -30,6 +30,9 @@ export const Header = () => {
               <Nav.Link as={Link} to="/login">
                 Log In
               </Nav.Link>
+              <Nav.Link as={Link} to="/posts">
+                Posts
+              </Nav.Link>
 
               {/* <NavDropdown title="phones" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Samsung</NavDropdown.Item>
