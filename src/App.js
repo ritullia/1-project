@@ -20,7 +20,7 @@ import { ItemList } from "./Products/ItemList";
 // import { MoodChecker } from "./6-paskaita-useState/MoodChecker";
 import { Header } from "./Products/Header";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { HomePage } from "./Products/HomePage";
 import { Login } from "./Products/Login";
 import { Register } from "./Products/Register";
@@ -54,36 +54,62 @@ function App() {
   //   console.log("Keydown event 1");
   //   console.log(e.code);
   // };
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
-      <Header></Header>
+      <Header />
+      {isSignedIn && (
+        <button
+          onClick={() => {
+            setIsSignedIn(false);
+          }}
+        >
+          LOGOUT
+        </button>
+      )}
+      {!isSignedIn && (
+        <button
+          onClick={() => {
+            setIsSignedIn(true);
+            navigate("/");
+          }}
+        >
+          LOGIN
+        </button>
+      )}
       <Routes>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/" element={<HomePage />} />
         <Route
-          path="/about"
-          element={
-            <React.Suspense fallback={<div>Showing while component loads</div>}>
-              <About />
-            </React.Suspense>
-          }
+          path="/login"
+          element={<Login setIsSignedIn={setIsSignedIn} />}
         />
-        <Route
-          path="/contact-us"
-          element={
-            <React.Suspense
-              fallback={<div>Please wait, you'll see our contacts soon</div>}
-            >
-              <ContactUs />
-            </React.Suspense>
-          }
-        />
-        <Route path="/products" element={<ItemList />} />
-        <Route path="/product/:id" element={<ProductsDetails />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
         <Route element={<Protected isSignedIn={isSignedIn} />}>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/about"
+            element={
+              <React.Suspense
+                fallback={<div>Showing while component loads</div>}
+              >
+                <About />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path="/contact-us"
+            element={
+              <React.Suspense
+                fallback={<div>Please wait, you'll see our contacts soon</div>}
+              >
+                <ContactUs />
+              </React.Suspense>
+            }
+          />
+          <Route path="/products" element={<ItemList />} />
+          <Route path="/product/:id" element={<ProductsDetails />} />
+
           <Route path="/posts" element={<Posts />}>
             <Route index element={<IndexPost />} />
             <Route path=":postId" element={<Post />}>

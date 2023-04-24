@@ -7,10 +7,11 @@ import {
   StyledHeader,
 } from "./styles/StyledLogin";
 
-export const Login = () => {
+export const Login = ({ setIsSignedIn }) => {
   const navigate = useNavigate();
 
   const handleOnSubmit = () => {
+    setIsSignedIn(true);
     navigate("/products");
   };
 

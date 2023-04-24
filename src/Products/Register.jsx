@@ -1,4 +1,6 @@
 import { useState } from "react";
+// import { Link } from "react-router-dom";
+import axios from "axios";
 
 import {
   RegisterContainer,
@@ -17,7 +19,14 @@ export const Register = () => {
   });
 
   const handleInfoSubmit = (e) => {
+    console.log("Ar suveiks");
     e.preventDefault();
+
+    axios
+      .post("http://localhost:8000/register", formData)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+
     alert(
       `${formData.name} ${formData.lastname} registered with: ${formData.email}`
     );
@@ -66,8 +75,10 @@ export const Register = () => {
             placeholder="Password:"
             onChange={handleOnChange}
           />
-          <FormInput type="password" placeholder="Re-enter Password" />
-          <StyledButton className="btn">Create Account</StyledButton>
+          {/* <FormInput type="password" placeholder="Re-enter Password" /> */}
+          <StyledButton onClick={handleInfoSubmit} className="btn">
+            Create Account
+          </StyledButton>
         </RegisterForm>
       </RegisterContainer>
     </>
