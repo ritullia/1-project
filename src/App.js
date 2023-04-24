@@ -29,6 +29,14 @@ import { PageNotFound } from "./Products/PageNotFound";
 import { Posts } from "./Products/posts/Posts";
 import { Post } from "./Products/posts/Post";
 import { Comments } from "./Products/posts/Comments";
+import { IndexPost } from "./Products/posts/IndexPost";
+import Protected from "./Products/Protected";
+import React from "react";
+import { CommentInfo } from "./Products/posts/CommentInfo";
+import { CommentIndex } from "./Products/posts/CommentIndex";
+
+const About = React.lazy(() => import("./Products/About"));
+const ContactUs = React.lazy(() => import("./Products/ContactUs"));
 
 function App() {
   // const onFaustasHeaderClick = () => {
@@ -46,19 +54,44 @@ function App() {
   //   console.log("Keydown event 1");
   //   console.log(e.code);
   // };
-
+  const [isSignedIn, setIsSignedIn] = useState(true);
   return (
     <>
+      <Header></Header>
       <Routes>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<HomePage />} />
+        <Route
+          path="/about"
+          element={
+            <React.Suspense fallback={<div>Showing while component loads</div>}>
+              <About />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/contact-us"
+          element={
+            <React.Suspense
+              fallback={<div>Please wait, you'll see our contacts soon</div>}
+            >
+              <ContactUs />
+            </React.Suspense>
+          }
+        />
         <Route path="/products" element={<ItemList />} />
         <Route path="/product/:id" element={<ProductsDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/posts" element={<Posts />}>
-          <Route path=":postId" element={<Post />}>
-            <Route path="comments" element={<Comments />} />
+        <Route element={<Protected isSignedIn={isSignedIn} />}>
+          <Route path="/posts" element={<Posts />}>
+            <Route index element={<IndexPost />} />
+            <Route path=":postId" element={<Post />}>
+              <Route path="comments" element={<Comments />}>
+                <Route index element={<CommentIndex />} />
+                <Route path="commentInfo" element={<CommentInfo />} />
+              </Route>
+            </Route>
           </Route>
         </Route>
       </Routes>

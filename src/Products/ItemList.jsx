@@ -6,7 +6,6 @@ import { ToastMessage } from "./ToastMessage";
 import { Modal, Button } from "react-bootstrap";
 import "./styles/styles.css";
 import { useEffect } from "react";
-import { Header } from "./Header";
 
 export const ItemList = () => {
   const [activeItem, setActiveItem] = useState(null);
@@ -50,7 +49,6 @@ export const ItemList = () => {
 
   return (
     <>
-      <Header></Header>
       <div>
         <div>
           <input onBlur={handleProductOnChange} />

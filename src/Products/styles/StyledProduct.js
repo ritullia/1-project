@@ -54,14 +54,26 @@ export const ProductImages = styled.img`
   padding: 5px;
 `;
 export const ProductPrice = styled.div`
-  width: 90px;
+  width: 180px;
   height: 50px;
   padding: 5px;
   background-color: #cba1c0;
   display: flex;
-  align-items: center;
+  align-content: center;
   justify-content: center;
 `;
 export const ProductPriceText = styled.p`
   font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+`;
+
+export const ProductStockDiv = styled.div`
+  width: 180px;
+  height: 50px;
+  padding: 5px;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
 `;

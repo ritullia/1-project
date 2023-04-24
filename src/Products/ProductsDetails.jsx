@@ -1,4 +1,3 @@
-import { Header } from "./Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
@@ -12,6 +11,8 @@ import {
   ProductText,
   ProductDescr,
   ProductPrice,
+  ProductPriceText,
+  ProductStockDiv,
 } from "./styles/StyledProduct";
 
 export const ProductsDetails = ({ item }) => {
@@ -37,7 +38,6 @@ export const ProductsDetails = ({ item }) => {
 
   return (
     <>
-      <Header />
       {/* <div>Product details - Item id: {id}</div> */}
       <MainContainer>
         <ImgContainer>
@@ -54,16 +54,16 @@ export const ProductsDetails = ({ item }) => {
             <ProductText>Brand: {singleProduct.brand}</ProductText>
             <ProductDescr>{singleProduct.description}</ProductDescr>
           </div>
-          <div>
+          <ProductStockDiv>
             <p>
               <span>Stock: {singleProduct.stock}</span>
             </p>
             <p>Category: {singleProduct.category}</p>
-          </div>
+          </ProductStockDiv>
           <ProductPrice>
-            <p>
+            <ProductPriceText>
               {singleProduct.price} <span>€</span>
-            </p>
+            </ProductPriceText>
           </ProductPrice>
           <div>
             <div>Rating: {singleProduct.rating}</div>

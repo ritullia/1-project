@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header } from "./Header";
+
 import {
   RegisterContainer,
   MainTag,
@@ -35,7 +35,6 @@ export const Register = () => {
 
   return (
     <>
-      <Header />
       <RegisterContainer>
         <MainTag>
           <h2>Register Here</h2>

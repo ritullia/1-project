@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Header } from "./Header";
+
 export const HomePage = () => {
   const StyledHomePage = styled.h2`
     margin-top: 100px;
@@ -8,7 +8,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <Header></Header>
       <StyledHomePage>You are in Homepage</StyledHomePage>
     </>
   );

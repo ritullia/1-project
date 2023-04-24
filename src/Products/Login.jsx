@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Header } from "./Header";
 import {
   LoginContainer,
   FormStyle,
@@ -17,7 +16,6 @@ export const Login = () => {
 
   return (
     <>
-      <Header></Header>
       <button onClick={() => navigate("/")}>Back to Home page</button>
       <LoginContainer>
         <div>
