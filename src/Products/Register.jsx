@@ -24,13 +24,17 @@ export const Register = () => {
 
     axios
       .post("http://localhost:8000/register", formData)
-      .then((response) => console.log(response))
+      .then((response) => {
+        alert(
+          `${formData.name} ${formData.lastname} registered with: ${formData.email}`
+        );
+      })
       .catch((err) => console.log(err));
-
-    alert(
-      `${formData.name} ${formData.lastname} registered with: ${formData.email}`
-    );
   };
+
+  // alert(
+  //   `${formData.name} ${formData.lastname} registered with: ${formData.email}`
+  // sioje vietoje komanda alert neteisinga, kadangi visiskai neatsizvelgia i backend ir nesekmingu registracijos metu, jis klaidingai informuotu apie sekminga registracija.
 
   const handleOnChange = (e) => {
     // console.log("e.target.value", e.target.value);

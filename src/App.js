@@ -58,7 +58,7 @@ function App() {
   const navigate = useNavigate();
   return (
     <>
-      <Header />
+      <Header isSignedIn={isSignedIn} />
       {isSignedIn && (
         <button
           onClick={() => {
